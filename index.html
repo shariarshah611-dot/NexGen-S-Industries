@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexGen-Z Industries</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-text">NEXGEN-Z INDUSTRIES</div>
+            <div class="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <div id="percent">0%</div>
+        </div>
+    </div>
+
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo"></div>
+        <ul class="nav-links">
+            <li><a href="javascript:void(0)" onclick="scrollToSection('home')">Home</a></li>
+            <li><a href="javascript:void(0)" onclick="scrollToSection('about')">About</a></li>
+            <li><a href="javascript:void(0)" onclick="scrollToSection('products')">Products</a></li>
+            <li><a href="javascript:void(0)" onclick="scrollToSection('faq')">FAQ</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('Settings coming soon!')">Settings</a></li>
+            <li><a href="javascript:void(0)" onclick="alert('How can we help?')">Help</a></li>
+        </ul>
+        <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+    </div>
+    </nav>
+    
+    <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+            <input type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+        <em id="theme-text">Enable Light Mode</em>
+    </div>
+
+    <div id="sidebar" class="sidebar">
+        <div class="close-btn" onclick="toggleSidebar()">×</div>
+        <ul class="side-links">
+            <li><a href="javascript:void(0)" onclick="scrollToSection('home')">Home</a></li>
+            <li><a href="javascript:void(0)" onclick="scrollToSection('about')">About</a></li>
+            <li><a href="javascript:void(0)" onclick="scrollToSection('products')">Products</a></li>
+            <li><a href="javascript:void(0)" onclick="scrollToSection('faq')">FAQ</a></li>
+        </ul>
+    </div>
+
+    <header class="hero" id="home">
+        <div class="hero-content reveal">
+            <h1><span>Most Famous Product</span></h1>
+            <h1>Hi! I'm <span>PikoBot</span></h1>
+            <p>Your Desk Companion | Focus Timer | Emotional AI</p>
+            <button class="btn-primary" onclick="scrollToSection('products')">Discover Piko Z</button>
+        </div>
+    </header>
+
+    <section class="testimonials">
+        <h2>Happy Customers</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-item active">
+                <p>"The PikoBot is amazing! My desk feels alive now."</p>
+                <span>- Rahat Ahmed</span>
+            </div>
+            <div class="testimonial-item">
+                <p>"Excellent delivery speed and great support."</p>
+                <span>- Sumaiya Khan</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <div class="reveal">
+            <h2>About PikoBot</h2>
+            <p>A new era of robotics. Designed and built by NexGen-Z Industries, a Bangladeshi startup creating real-life robots inspired by science fiction.</p>
+        </div>
+    </section>
+    
+    <div class="search-wrap">
+        <div class="search-container">
+            <input type="text" id="productSearch" placeholder="পছন্দের রোবট খুঁজুন..." onkeyup="searchProduct()">
+            <span class="search-icon">🔍</span>
+        </div>
+    </div>
+    
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterProduct('all', this)">All</button>
+        <button class="filter-btn" onclick="filterProduct('mini', this)">Mini Series</button>
+        <button class="filter-btn" onclick="filterProduct('classic', this)">Classic</button>
+    </div>
+
+    <section class="products" id="products">
+        <h2>Choose Your Products</h2>
+        <div class="product-grid" id="productGrid">
+            <div class="card reveal" data-category="mini">
+                <img src="p2.jpeg" alt="PikoBot" onclick="openLightbox('p2.jpeg')">
+                <h3>PikoBot Transparent</h3>
+                <p class="price">2000 Taka</p>
+                <button class="buy-btn" onclick="openOrderForm('PikoBot Transparent', '2000 Taka')">Buy Now</button>
+            </div>
+            <div class="card popular reveal" data-category="classic">
+                <img src="p4.jpg" alt="PikoBot" onclick="openLightbox('p4.jpg')">
+                <h3>PikoBot Classic</h3>
+                <p class="price">1900 Taka</p>
+                <button class="buy-btn" onclick="openOrderForm('PikoBot Classic', '1900 Taka')">Buy Now</button>
+            </div>
+            <div class="card popular reveal" data-category="classic">
+                <img src="p1.png" alt="PikoBot" onclick="openLightbox('p1.png')">
+                <h3>PikoBot Pro</h3>
+                <p class="price">2500 Taka</p>
+                <button class="buy-btn" onclick="openOrderForm('PikoBot Pro', '2500 Taka')">Buy Now</button>
+            </div>
+            <div class="card popular reveal" data-category="mini">
+                <img src="p11.jpeg" alt="PikoBot" onclick="openLightbox('p3.png')">
+                <h3>PikoBot Mini</h3>
+                <p class="price">1500 Taka</p>
+                <button class="buy-btn" onclick="openOrderForm('PikoBot Mini', '1500 Taka')">Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="accordion">
+        <div class="accordion-item">
+         <button class="accordion-header" onclick="toggleFAQ(this)">What exactly is Pikobot?</button>
+         <div class="accordion-content">
+         <div class="accordion-body">
+            <p>Pikobot is a small desk robot that shows emotions and helps you stay focused.</p>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderForm()">&times;</span>
+            <h2>Complete Your Order</h2>
+            <form id="checkoutForm">
+                <input type="text" id="selectedProduct" readonly>
+                <input type="text" id="selectedPrice" readonly>
+                <input type="text" id="userName" placeholder="Full Name" required>
+                <input type="tel" id="userPhone" placeholder="Phone Number" required>
+                <textarea id="userAddress" placeholder="Delivery Address" rows="4" required></textarea>
+                <select id="paymentMethod" required>
+                    <option value="" disabled selected>Select Payment Method</option>
+                    <option value="Cash on Delivery">Cash on Delivery</option>
+                    <option value="Bkash (01302133194)">Bkash</option>
+                    <option value="Nagad (01302133194)">Nagad</option>
+                    <option value="Rocket (01302133194)">Rocket</option>
+                </select>
+                <button type="submit" class="confirm-btn">Confirm Order (via WhatsApp)</button>
+            </form>
+        </div>
+    </div>
+    
+    <button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+    <div id="toast" class="toast">Thank you! Redirecting to WhatsApp...</div>
+
+    <a href="https://wa.me/8801302133194" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span>Chat with us</span>
+    </a>
+
+    <footer class="main-footer reveal">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>NexGen-Z Industries</h3>
+                <p>ভবিষ্যতের রোবোটিক্স টেকনোলজি এখন আপনার হাতের মুঠোয়।</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="scrollToSection('home')">Home</a></li>
+                    <li><a href="javascript:void(0)" onclick="scrollToSection('products')">Products</a></li>
+                    <li><a href="javascript:void(0)" onclick="scrollToSection('faq')">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>📧 support@nexgenz.com</p>
+                <p>📞 +880 1302 133 194</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 NexGen-Z Industries | All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+/* আপনার দেওয়া অরিজিনাল সিএসএস কোড */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #04101CE6;
+    color: white;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.navbar {
+    background: #000000;
+    background-image: url('p1.png');
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    height: 66px;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: column; 
+    align-items: left;    
+    gap: 10px;
+}
+
+/* --- এই অংশটুকু আপনার চাহিদা অনুযায়ী আপডেট করা হয়েছে --- */
+.nav-links {
+    background: rgba(125, 159, 197, 0.79);
+    list-style: none;
+    display: flex;
+    gap: 15px;      
+    padding: 5px; /* প্যাডিং একটু বাড়িয়ে ব্যালেন্স করা হয়েছে */
+    margin: 0;
+    border-radius: 15px;
+    height: 70px;
+    
+    /* স্ক্রল ফিচার যোগ করা হয়েছে */
+    overflow-x: auto; 
+    white-space: nowrap; 
+    max-width: 250px; /* বাটনগুলো নির্দিষ্ট জায়গার পর স্ক্রল হবে */
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox-এর জন্য স্ক্রলবার হাইড */
+    -ms-overflow-style: none; /* IE/Edge-এর জন্য স্ক্রলবার হাইড */
+}
+
+/* Chrome/Safari-এর জন্য স্ক্রলবার হাইড */
+.nav-links::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-links li {
+    display: inline-block;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    nav-down: 5px;
+}
+
+/* লোগো সেকশন */
+.logo {
+    width: 120px;
+    height: 100px;
+    text-align: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* আপনার বাকি সব অরিজিনাল কোড নিচে অপরিবর্তিত রাখা হলো */
+.hero {
+    padding-top: 80px; 
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #6E7F84BD url("p3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 80vh;
+}
+
+.hero h1 span { 
+    color: #00d4ff;
+}
+
+/* মেইন গ্রিড কন্টেইনার */
+.product-grid {
+    display: grid;
+    /* ডেক্সটপে ৩টি বা ৪টি কার্ড দেখাবে */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 15px;
+}
+
+/* মোবাইল রেসপন্সিভ - আপনার দ্বিতীয় ছবির মতো ডাবল লেআউট */
+@media screen and (max-width: 480px) {
+    .product-grid {
+        /* এক লাইনে ফিক্সড ২ টি কার্ড */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .card h3 {
+        font-size: 14px;
+        /* টেক্সট সাইজ ছোট করা যাতে ভেঙে না যায় */
+    }
+    
+    .price {
+        font-size: 16px;
+    }
+}
+
+
+
+/* প্রোডাক্ট কার্ডের নতুন এবং উন্নত স্টাইল */
+.card {
+    background: #1a232e; /* একটু ডার্ক ব্যাকগ্রাউন্ড */
+    padding: 15px;
+    border-radius: 15px;
+    width: 100%; 
+    max-width: 160px; 
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* স্মুথ মুভমেন্ট */
+    cursor: pointer;
+}
+
+/* মাউস নিলে কার্ডটি ভেসে উঠবে */
+.card:hover {
+    transform: translateY(-10px); /* কার্ড ১০ পিক্সেল উপরে উঠবে */
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2); /* হালকা নীল ছায়া */
+    border-color: #00d4ff; /* বর্ডার কালার পরিবর্তন */
+}
+
+/* জনপ্রিয় প্রোডাক্টের জন্য বিশেষ গ্লো ইফেক্ট */
+.card.popular { 
+    border: 2px solid #00d4ff; 
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
+}
+
+.card.popular:hover {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); /* হোভার করলে গ্লো বাড়বে */
+}
+
+/* ইমেজের ওপর জুম ইফেক্ট */
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.card:hover img {
+    transform: scale(1.05); /* ইমেজ কিছুটা বড় হবে */
+}
+
+/* Buy Now বাটন স্টাইল আপডেট */
+.buy-btn { 
+    background: #00d4ff; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    width: 100%; 
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.buy-btn:hover {
+    background: #53CC6A; /* হোভার করলে সবুজ হবে */
+    color: white;
+}
+
+/* লোডার */
+#loader { position: fixed; width: 100%; height: 100%; background: #000; display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.loader-content { text-align: center; width: 80%; max-width: 400px; }
+.progress-container { background: #333; height: 6px; border-radius: 10px; margin: 15px 0; overflow: hidden; }
+#progress-bar { width: 0%; height: 100%; background: #828; transition: width 0.1s; }
+#percent { font-size: 1.5rem; color: #53CC6A; font-weight: bold; }
+
+/* সাইডবার */
+.sidebar { position: fixed; top: 0; right: -300px; width: 250px; height: 100%; background: #238EAED6; z-index: 2000; padding: 40px 20px; transition: 0.4s ease-in-out; }
+.sidebar.active { right: 0; }
+.close-btn { font-size: 35px; cursor: pointer; color: white; text-align: right; }
+.side-links { list-style: none; padding-top: 40px; }
+.side-links li { margin: 25px 0; }
+.side-links a { color: white; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+.menu-btn { position: absolute; right: 20px; top: 20px; color: white; font-size: 24px; cursor: pointer; }
+
+/* অর্ডার ফরম */
+.modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+.modal-content { background: #3FA1F363; margin: 5% auto; padding: 30px; border-radius: 20px; width: 80%; max-width: 450px; border: 1px solid greenyellow; position: relative; }
+.close { color: #fff; float: right; font-size: 30px; cursor: pointer; }
+#checkoutForm input, #checkoutForm textarea, #checkoutForm select { width: 100%; padding: 12px; margin: 10px 0; background: #0b0e14; border: 1px solid #30363d; color: #fff; border-radius: 8px; box-sizing: border-box; }
+.confirm-btn { width: 100%; background: greenyellow; color: #000; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+
+.btn-primary {
+    padding: 12px 30px;
+    background: #00d4ff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Scroll to Top Button Style */
+#scrollTopBtn {
+    display: none; 
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    background-color: #00d4ff;
+    color: black;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: #53CC6A;
+}
+
+/* Toast Notification Style */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    padding: 16px;
+    position: fixed;
+    z-index: 4000;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    border: 1px solid #00d4ff;
+}
+
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+
+/* FAQ আধুনিক ডিজাইন */
+.accordion-item {
+    border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+    margin-bottom: 10px;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 15px;
+    background: none;
+    border: none;
+    color: #00d4ff;
+    text-align: left;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.accordion-header:after {
+    content: '▼'; /* অ্যারো সিম্বল */
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.accordion-header.active:after {
+    transform: rotate(180deg); /* ক্লিক করলে অ্যারো ঘুরবে */
+}
+
+/* স্লাইড এনিমেশনের মূল অংশ */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out; /* স্মুথ স্লাইড ইফেক্ট */
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.accordion-body {
+    padding: 15px;
+}
+
+/* ১. থিম টগল স্টাইল */
+:root { --bg-color: #04101CE6; --text-color: white; --card-bg: #1a232e; }
+[data-theme="light"] { --bg-color: #f4f4f4; --text-color: #333; --card-bg: #ffffff; }
+
+body { background-color: var(--bg-color); color: var(--text-color); transition: 0.3s; }
+.card { background: var(--card-bg); color: var(--text-color); }
+
+.theme-switch-wrapper { display: flex; align-items: center; gap: 10px; margin-left: 20px; }
+.theme-switch { display: inline-block; height: 24px; position: relative; width: 50px; }
+.theme-switch input { display:none; }
+.slider { background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px; }
+.slider:before { background-color: white; bottom: 4px; content: ""; height: 16px; left: 4px; position: absolute; transition: .4s; width: 16px; border-radius: 50%; }
+input:checked + .slider { background-color: #00d4ff; }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* ২. সার্চ বার */
+.search-container { text-align: center; margin: 20px 0; }
+#productSearch { padding: 10px; width: 60%; border-radius: 20px; border: 1px solid #00d4ff; background: transparent; color: var(--text-color); }
+
+/* ৩. লাইটবক্স গ্যালারি */
+.lightbox { display: none; position: fixed; z-index: 5000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); }
+.lightbox-content { margin: auto; display: block; width: 80%; max-width: 700px; padding-top: 100px; }
+.close-lightbox { position: absolute; top: 50px; right: 50px; color: white; font-size: 40px; cursor: pointer; }
+
+/* ৪. টেস্টিমোনিয়াল স্লাইডার */
+.testimonials { padding: 40px 20px; text-align: center; background: rgba(0, 212, 255, 0.05); }
+.testimonial-item { display: none; padding: 20px; font-style: italic; }
+.testimonial-item.active { display: block; animation: fadeIn 1s; }
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+
+/* সার্চ বার ডিজাইন */
+.search-wrap {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    background: transparent;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+#productSearch {
+    width: auto;
+    padding: 12px 40px 12px 20px;
+    border-radius: 15px;
+    border: 1px solid #00d4ff;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color); /* আপনার আগের থিম ভেরিয়েবল অনুযায়ী */
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+#productSearch:focus {
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #00d4ff;
+    pointer-events: none;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 80px; /* স্ক্রল বাটনের উপরে থাকবে */
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 2500;
+    transition: 0.3s;
+}
+
+.whatsapp-float img { width: 25px; }
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    background-color: #20b358;
+}
+
+/* মোবাইলে শুধু আইকন দেখাবে টেক্সট নয় */
+@media screen and (max-width: 600px) {
+    .whatsapp-float span { display: none; }
+    .whatsapp-float { padding: 12px; border-radius: 50%; }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 2s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 10px 25px;
+    border: 1px solid #00d4ff;
+    background: transparent;
+    color: #00d4ff;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: #00d4ff;
+    color: #000;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.main-footer {
+    background: #000;
+    color: #fff;
+    padding: 50px 20px 20px;
+    margin-top: 50px;
+    border-top: 2px solid #00d4ff;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-about, .footer-links, .footer-contact {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-links ul { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { color: #00d4ff; text-decoration: none; }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #888;
+}
+
+.social-icons a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* কার্ডের সাইজ সবসময় সমান রাখার জন্য */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* সব কার্ড একই উচ্চতার হবে */
+    overflow: hidden;
+    background: #04101C; /* আপনার থিমের সাথে মিল রেখে ব্যাকগ্রাউন্ড */
+}
+
+/* ছবির সাইজ ফিক্সড করার জন্য */
+.card img {
+    width: auto;
+    height: auto; /* আপনার পছন্দমতো একটি ফিক্সড উচ্চতা (যেমন ২০০ পিক্সেল) */
+    object-fit: cover; /* এটি ছবিকে স্ট্রেচ বা লম্বা হতে দেবে না, সুন্দর করে কেটে ফ্রেমের ভেতর রাখবে */
+    display: block;
+}
+
+/* যদি ছবির নিচে সাদা অংশ দেখা যায় তবে তা দূর করতে */
+.product-grid {
+    align-items: stretch;
+}
+
+/* প্রফেশনাল স্ক্রল রিভিল এনিমেশন */
+.reveal {
+    position: relative;
+    transform: translateY(40px); /* একটু বেশি নিচ থেকে আসবে */
+    opacity: 0;
+    transition: all 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* স্মুথ বাউন্স ইফেক্ট */
+    visibility: hidden;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* হিরো সেকশনের জন্য স্পেশাল রিভিল (পেজ লোড হওয়ার সাথে সাথে আসবে) */
+.hero-content {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1.5s ease;
+}
+
+.hero-content.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Testimonial Slider এনিমেশন */
+.testimonial-item {
+    display: none; /* শুরুতে সব বন্ধ থাকবে */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.testimonial-item.active {
+    display: block; /* শুধু একটিভ স্লাইড দেখাবে */
+    opacity: 1;
+}
+
+/* FAQ Accordion স্টাইল */
+.accordion-content {
+    display: none; /* শুরুতে উত্তর লুকানো থাকবে */
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 0 0 10px 10px;
+}
+
+.accordion-item.open .accordion-header {
+    background-color: #00d4ff;
+    color: #000;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: rgba(255, 255, 255, 0.05);
+}
+.accordion-body {
+    padding: 15px;
+    color: #ccc;
+}
