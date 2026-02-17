@@ -144,6 +144,30 @@
         <img class="lightbox-content" id="lightbox-img">
     </div>
 
+    <div id="detailModal" class="modal">
+    <div class="modal-content detail-content">
+        <span class="close" onclick="closeDetailForm()">&times;</span>
+        <div id="detailView">
+            <img id="detailImg" src="" alt="Product" style="width:100%; border-radius:10px; margin-bottom:15px;">
+            <h2 id="detailName"></h2>
+            <p id="detailPrice" style="color:#00d4ff; font-size:1.2rem; font-weight:bold;"></p>
+            
+            <div class="review-section">
+                <h4 style="margin-bottom: 5px;">Customer Reviews ⭐⭐⭐⭐⭐</h4>
+                <p style="font-size: 0.9rem; color: #ccc; border-bottom: 1px solid #333; padding-bottom: 5px;">"খুবই ভালো রোবট, ডেস্কে দেখতে চমৎকার লাগে!" - জাহিদ</p>
+                <p style="font-size: 0.9rem; color: #ccc;">"Fast delivery and great quality." - Sumaiya</p>
+            </div>
+
+            <div class="quantity-section" style="margin: 20px 0; display: flex; align-items: center; gap: 10px;">
+                <label>Quantity:</label>
+                <input type="number" id="prodQty" value="1" min="1" style="width: 70px; padding: 8px; background: #0b0e14; border: 1px solid #30363d; color: white; border-radius: 5px;">
+            </div>
+
+            <button class="confirm-btn" id="proceedToOrder">Proceed to Buy</button>
+        </div>
+    </div>
+    </div>
+
     <div id="orderModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeOrderForm()">&times;</span>
