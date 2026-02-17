@@ -575,3 +575,35 @@ input:checked + .slider:before { transform: translateX(26px); }
     padding: 15px;
     color: #ccc;
 }
+
+/* ২. কিবোর্ড সমস্যার সমাধান ও নতুন ডিজাইন */
+
+/* মোডাল কন্টেন্ট যেন কিবোর্ড আসলে ঢাকা না পড়ে এবং স্ক্রল করা যায় */
+.modal-content {
+    max-height: 80vh; /* স্ক্রিনের ৮০% উচ্চতা নিবে */
+    overflow-y: auto; /* কন্টেন্ট বেশি হলে ভেতরে স্ক্রল হবে */
+    -webkit-overflow-scrolling: touch; /* আইফোনে স্মুথ স্ক্রল */
+    position: relative;
+    margin-top: 50px; /* উপরে কিছুটা জায়গা রাখা */
+}
+
+/* রিভিউ সেকশনের স্টাইল */
+.review-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.detail-content {
+    background: #04101C !important; /* আপনার থিমের সাথে মিল রেখে */
+    border: 1px solid #00d4ff;
+}
+
+/* মোবাইল কিবোর্ড আসলে মোডাল পজিশন ঠিক করা */
+@media screen and (max-height: 500px) {
+    .modal-content {
+        margin-top: 10px;
+    }
+}
