@@ -607,3 +607,33 @@ input:checked + .slider:before { transform: translateX(26px); }
         margin-top: 10px;
     }
 }
+
+/* style.css এ যোগ করুন */
+.products {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0;
+    background: #04101C; /* মূল ব্যাকগ্রাউন্ড */
+}
+
+#canvas3d {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* পেছনে থাকবে */
+    pointer-events: none; /* যাতে মাউস ক্লিক কার্ডে কাজ করে */
+}
+
+.product-content {
+    position: relative;
+    z-index: 2; /* ক্যানভাসের উপরে থাকবে */
+}
+
+.products h2 {
+    text-align: center;
+    color: #00d4ff;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    margin-bottom: 30px;
+}
