@@ -217,3 +217,70 @@ function toggleFAQ(element) {
         content.style.display = "none";
     }
 }
+
+// ১২.js এর নিচে যোগ করুন
+const canvas = document.getElementById('canvas3d');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+const particleCount = 100;
+
+function resizeCanvas() {
+    const section = document.querySelector('.products');
+    canvas.width = section.offsetWidth;
+    canvas.height = section.offsetHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Particle {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.speed = Math.random() * 2 + 1;
+        this.size = Math.random() * 2;
+        this.alpha = Math.random() * 0.5;
+    }
+
+    draw() {
+        ctx.fillStyle = `rgba(0, 212, 255, ${this.alpha})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // ট্রেইল বা লেজ তৈরির জন্য ছোট লাইন
+        ctx.strokeStyle = `rgba(0, 212, 255, ${this.alpha / 2})`;
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x, this.y - 10);
+        ctx.stroke();
+    }
+
+    update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) {
+            this.y = -10;
+            this.x = Math.random() * canvas.width;
+        }
+        this.draw();
+    }
+}
+
+function initParticles() {
+    for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => p.update());
+    requestAnimationFrame(animate);
+}
+
+initParticles();
+animate();
