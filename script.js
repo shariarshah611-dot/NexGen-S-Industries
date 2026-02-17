@@ -34,15 +34,47 @@ function scrollToSection(sectionId) {
 }
 
 // ৪. অর্ডার ফরম
+let currentProductData = {};
+
+// প্রথমে ডিটেইল মোডাল ওপেন হবে
 function openOrderForm(productName, price) {
-    document.getElementById('orderModal').style.display = 'block';
-    document.getElementById('selectedProduct').value = "Product: " + productName;
-    document.getElementById('selectedPrice').value = "Price: " + price;
+    currentProductData = { name: productName, price: price };
+    
+    document.getElementById('detailModal').style.display = 'block';
+    document.getElementById('detailName').innerText = productName;
+    document.getElementById('detailPrice').innerText = price;
+    
+    // কার্ড থেকে ছবি খুঁজে নিয়ে মোডালে বসানো
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        if(card.querySelector('h3').innerText === productName) {
+            document.getElementById('detailImg').src = card.querySelector('img').src;
+        }
+    });
 }
 
+// ডিটেইল মোডাল বন্ধ করা
+function closeDetailForm() {
+    document.getElementById('detailModal').style.display = 'none';
+}
+
+// অর্ডার ফরম বন্ধ করা
 function closeOrderForm() {
     document.getElementById('orderModal').style.display = 'none';
 }
+
+// "Proceed to Buy" বাটনে ক্লিক করলে যা হবে
+document.getElementById('proceedToOrder').addEventListener('click', () => {
+    let qty = document.getElementById('prodQty').value;
+    let priceNumber = parseInt(currentProductData.price.replace(/\D/g, '')); // শুধু সংখ্যা নেওয়া
+    
+    closeDetailForm(); // ডিটেইল বন্ধ হবে
+    
+    // আসল অর্ডার ফরম ওপেন হবে
+    document.getElementById('orderModal').style.display = 'block';
+    document.getElementById('selectedProduct').value = "Product: " + currentProductData.name + " (Qty: " + qty + ")";
+    document.getElementById('selectedPrice').value = "Total: " + (priceNumber * qty) + " Taka";
+});
 
 // ৫. WhatsApp মেসেজ সেন্ডিং
 document.getElementById('checkoutForm').addEventListener('submit', function(e) {
